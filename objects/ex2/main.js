@@ -6,3 +6,15 @@ const users = [{
   nome: "Doge",
   imagem: "https://images-na.ssl-images-amazon.com/images/I/81-yKbVND-L._SY355_.png"
 }]
+
+class Avatar {
+  constructor(usuario){
+    this.usuario = usuario
+  }
+  render(){
+    const avatar  = 
+  }
+}
+
+const primeiroAvatar = new Avatar(users[0])
+console.log(primeiroAvatar.mostraInformacoes)
