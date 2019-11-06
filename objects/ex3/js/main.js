@@ -25,3 +25,28 @@ let resultados = [
         imagem: "http://img.recipepuppy.com/5.jpg"
     }
 ];
+
+// const searchPorTecla = (value) =>{
+//     resultados.filter(receita => {
+//         console.log(receita.titulo.includes(value))
+//     })
+// }
+
+
+resultados.map((resultados) => {
+    new Card(resultados).render()
+})
+
+document.querySelector(".button__search").addEventListener('click',
+    function () {
+        let inputValue = document.querySelector('.input__search').value.toUpperCase()
+        let achados = resultados.filter(receita => {
+            return receita.titulo.toUpperCase().includes(inputValue) || receita.ingredientes.toUpperCase().includes(inputValue)
+        })
+        if(achados.length > 0)
+        document.querySelector('.cards').innerHTML
+    })
+
+
+
+
