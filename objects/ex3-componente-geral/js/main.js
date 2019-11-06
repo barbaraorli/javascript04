@@ -26,6 +26,7 @@ let resultados = [
     }
 ];
 
+
 const renderNavbar = new Navbar
 
 renderNavbar.render()
@@ -35,15 +36,6 @@ resultados.map(receita => {
     return new Card(receita).render()
 }).join("")
 
-// resultados.map(receita => {
-//     document.querySelector('.cards').insertAdjacentHTML('beforeend', new Card(receita).render())
-// })
-
-// const searchPorTecla = (value) => {
-//     resultados.filter(receita => {
-//        console.log(receita.titulo.includes(value))
-//     })
-// }
 
 document.querySelector('.button__search').addEventListener('click', function(){
     let inputValue = document.querySelector('.input__search').value.toUpperCase()
@@ -51,14 +43,6 @@ document.querySelector('.button__search').addEventListener('click', function(){
         // o meu inputValue está incluso em alguma parte do título OU dos ingredientes.
         return receita.titulo.toUpperCase().includes(inputValue) || receita.ingredientes.toUpperCase().includes(inputValue)
     })
-    document.querySelector('.cards').innerHTML = 
-    achados.map((encontrado) => {
-        return new Card(encontrado).render()
-    }).join("")
+    console.log(achados)
 })
-
-
-
-
-
 

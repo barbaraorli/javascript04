@@ -5,28 +5,44 @@ const users = [{
 {
   nome: "Doge",
   imagem: "https://images-na.ssl-images-amazon.com/images/I/81-yKbVND-L._SY355_.png"
+},
+{
+  nome: "Antonio Banderas",
+  imagem: "https://answersafrica.com/wp-content/uploads/2019/06/antonio-banderas-640x441.jpg"
 }]
 
-class Avatar {
-  constructor(usuario) {
+class Avatar{
+  constructor(usuario){
     this.usuario = usuario
   }
-  mostraInformacoes() {
-    return `${this.usuario.nome}`
-
-    // render é um método que renderiza o conteúdo dado a ele quando a página é renderizada. Assim não precisamos criar uma função e chamá-la
-    render() {
-      const avatar = `<div class='avatar green'> 
-        <img class='img-rounded' src='${this.usuario.imagem}'/>
-        <h2> ${this.usuario.nome} </h2>
-      `
-      document.getElementById('cards-section').insertAdjacentHTML('beforeend', avatar)
-    }
+  renderComCreate(){
+    const avatarDiv = document.createElement('div')
+    avatarDiv.setAttribute("class", "avatar green")
+    const avatarImg = document.createElement('img')
+    avatarImg.src = this.usuario.imagem
+    avatarImg.setAttribute("class", "img-rounded")
+    const avatarTitle = document.createElement('h2')
+    avatarTitle.innerHTML = this.usuario.nome
+    avatarDiv.appendChild(avatarImg)
+    avatarDiv.appendChild(avatarTitle)
+    document.getElementById('cards-section').appendChild(avatarDiv)
   }
+  render() {
+    const avatar = `<div class="avatar green">
+        <img class="img-rounded" src=${this.usuario.imagem} />
+        <h2>${this.usuario.nome}</h2>
+      </div>`
+      document.getElementById('cards-section').insertAdjacentHTML('beforeend', avatar)
+  }
+}
 
-  const avatar1 = new Avatar(users[0])
+users.map((user, index) => {
+  new Avatar(user).renderComCreate()
+})
+document.getElementById('cards-section').insertAdjacentHTML('beforeend', '<br/><br/>')
 
-  // funciona como um forEach, porém o map retorna um array com cada elemento que ele itera.
-  users.map((user) => {
-    new Avatar(user).render()
-  })
+users.forEach((user) => {
+  new Avatar(user).render()
+})
+
+
